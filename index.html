@@ -16,13 +16,57 @@
     p {
       margin-bottom: 20px;
     }
+    #status-message {
+      margin: 10px 0;
+      padding: 8px;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+    }
+    #button-container {
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
   <h1>Kidventure2</h1>
   <p>Kidventure2 is loaded if you can see this text.</p>
-  <p>Click the button below to test the app functionality directly from this panel.</p>
+  
+  <!-- Status message to help with debugging -->
+  <div id="status-message">Waiting for script to load...</div>
+  
+  <!-- Dedicated container for the button -->
+  <div id="button-container">
+    <!-- The button will be created here by JavaScript -->
+  </div>
 
+  <!-- Inline script to check if external script loads -->
+  <script>
+    // This will help us determine if script.js is being loaded at all
+    console.log('Page loaded, about to execute script.js');
+    
+    // Create a fallback button in case the main script fails
+    setTimeout(function() {
+      const statusEl = document.getElementById('status-message');
+      if (statusEl && statusEl.textContent === 'Waiting for script to load...') {
+        statusEl.textContent = 'Warning: The script may not have loaded properly. Using fallback button.';
+        statusEl.style.backgroundColor = '#fff3cd';
+        
+        const fallbackButton = document.createElement('button');
+        fallbackButton.innerText = 'Fallback Button - Create Sticky Note';
+        fallbackButton.style.padding = '10px';
+        fallbackButton.style.margin = '10px';
+        fallbackButton.style.backgroundColor = '#ff7d4d';
+        fallbackButton.style.color = 'white';
+        fallbackButton.style.border = 'none';
+        fallbackButton.style.borderRadius = '4px';
+        fallbackButton.style.cursor = 'pointer';
+        
+        document.getElementById('button-container').appendChild(fallbackButton);
+      }
+    }, 3000); // Wait 3 seconds to see if main script executes
+  </script>
+  
+  <!-- Load the external script -->
   <script src="./script.js"></script>
 </body>
 </html>
