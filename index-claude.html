@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kidventure2</title>
+  <!-- Miro Web SDK v2 from unpkg -->
+  <script src="https://unpkg.com/@miro/board-sdk"></script>
+  <style>
+    body {
+      font-family: 'Helvetica', Arial, sans-serif;
+      padding: 15px;
+      text-align: center;
+    }
+    h1 {
+      color: #4262ff;
+    }
+    p {
+      margin-bottom: 20px;
+    }
+    #status-message {
+      margin: 10px 0;
+      padding: 8px;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+    }
+    #button-container {
+      margin-top: 20px;
+    }
+    .instruction {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #e6f7ff;
+      border-radius: 4px;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Kidventure2</h1>
+  <p>Kidventure2 is loaded if you can see this text.</p>
+  
+  <!-- Status message to help with debugging -->
+  <div id="status-message">Waiting for script to load...</div>
+  
+  <!-- Dedicated container for the button -->
+  <div id="button-container">
+    <!-- The button will be created here by JavaScript -->
+  </div>
+  
+  <div class="instruction">
+    <h3>How to test this app in Miro:</h3>
+    <ol>
+      <li>Go to the Miro Developer Console: <a href="https://miro.com/app/settings/user-profile/apps" target="_blank">https://miro.com/app/settings/user-profile/apps</a></li>
+      <li>Create a new app or edit your existing app</li>
+      <li>Set the App URL to: <code id="currentUrl"></code></li>
+      <li>Grant appropriate board permissions</li>
+      <li>Install and open the app in a Miro board</li>
+    </ol>
+    <p><strong>Note:</strong> This app only functions when loaded inside the Miro platform.</p>
+  </div>
+
+  <script>
+    // Display the current URL for easy copying
+    document.getElementById('currentUrl').textContent = window.location.href;
+  </script>
+  
+  <!-- Load the external script -->
+  <script src="./script.js"></script>
+</body>
+</html>
