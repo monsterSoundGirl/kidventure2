@@ -25,6 +25,16 @@
     #button-container {
       margin-top: 20px;
     }
+    .instruction {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #e6f7ff;
+      border-radius: 4px;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
   </style>
 </head>
 <body>
@@ -38,32 +48,22 @@
   <div id="button-container">
     <!-- The button will be created here by JavaScript -->
   </div>
+  
+  <div class="instruction">
+    <h3>How to test this app in Miro:</h3>
+    <ol>
+      <li>Go to the Miro Developer Console: <a href="https://miro.com/app/settings/user-profile/apps" target="_blank">https://miro.com/app/settings/user-profile/apps</a></li>
+      <li>Create a new app or edit your existing app</li>
+      <li>Set the App URL to: <code id="currentUrl"></code></li>
+      <li>Grant appropriate board permissions</li>
+      <li>Install and open the app in a Miro board</li>
+    </ol>
+    <p><strong>Note:</strong> This app only functions when loaded inside the Miro platform.</p>
+  </div>
 
-  <!-- Inline script to check if external script loads -->
   <script>
-    // This will help us determine if script.js is being loaded at all
-    console.log('Page loaded, about to execute script.js');
-    
-    // Create a fallback button in case the main script fails
-    setTimeout(function() {
-      const statusEl = document.getElementById('status-message');
-      if (statusEl && statusEl.textContent === 'Waiting for script to load...') {
-        statusEl.textContent = 'Warning: The script may not have loaded properly. Using fallback button.';
-        statusEl.style.backgroundColor = '#fff3cd';
-        
-        const fallbackButton = document.createElement('button');
-        fallbackButton.innerText = 'Fallback Button - Create Sticky Note';
-        fallbackButton.style.padding = '10px';
-        fallbackButton.style.margin = '10px';
-        fallbackButton.style.backgroundColor = '#ff7d4d';
-        fallbackButton.style.color = 'white';
-        fallbackButton.style.border = 'none';
-        fallbackButton.style.borderRadius = '4px';
-        fallbackButton.style.cursor = 'pointer';
-        
-        document.getElementById('button-container').appendChild(fallbackButton);
-      }
-    }, 3000); // Wait 3 seconds to see if main script executes
+    // Display the current URL for easy copying
+    document.getElementById('currentUrl').textContent = window.location.href;
   </script>
   
   <!-- Load the external script -->

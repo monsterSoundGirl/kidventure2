@@ -11,9 +11,44 @@ function updateStatus(message, isError = false) {
   console.log(message);
 }
 
+// Check if running inside Miro
+function isRunningInsideMiro() {
+  return window.miro !== undefined;
+}
+
 // Main initialization function
 async function initializeApp() {
   try {
+    // Check if we're running inside Miro
+    if (!isRunningInsideMiro()) {
+      updateStatus('This app is currently running standalone (outside Miro). The Miro SDK functions will not work here.', true);
+      
+      // Create a dummy button for standalone mode
+      const button = document.createElement('button');
+      button.innerText = 'Create Sticky Note (Demo Only)';
+      button.style.padding = '10px';
+      button.style.margin = '10px';
+      button.style.backgroundColor = '#4262ff';
+      button.style.color = 'white';
+      button.style.border = 'none';
+      button.style.borderRadius = '4px';
+      button.style.cursor = 'pointer';
+      
+      button.onclick = () => {
+        updateStatus('This button would create a sticky note if running inside Miro.', true);
+        alert('This app needs to run inside Miro to create sticky notes. To test this app, install it in Miro using the Developer Console.');
+      };
+      
+      const container = document.getElementById('button-container');
+      if (container) {
+        container.appendChild(button);
+        updateStatus('Demo button added. This app must be run inside Miro to use actual SDK features.');
+      }
+      
+      return; // Exit early, don't try to initialize Miro SDK
+    }
+    
+    // If we get here, we're running inside Miro
     updateStatus('Script loaded, initializing Miro SDK...');
     
     // Initialize the Miro SDK
@@ -125,10 +160,5 @@ window.onload = () => {
     }
   }
 };
-
-// Also add this as a fallback in case window.onload doesn't trigger properly
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM content loaded event fired');
-});
 
 console.log('Script.js has finished loading');
