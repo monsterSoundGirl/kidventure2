@@ -1,0 +1,19 @@
+{
+  "name": "Kidventure TTRPG App",
+  "description": "A collaborative TTRPG companion for families, running inside Miro boards.",
+  "icon": "https://raw.githubusercontent.com/monstersoundgirl/kidventure2/icon.png",
+  // If you don't have an icon yet, you can point this to any small public image
+  // or remove it entirely for now.
+
+  "permissions": [
+    "BOARD_READ",
+    "BOARD_WRITE",
+    "BOARD_WIDGETS"
+  ],
+  // We'll refine permissions as needed, but this minimal set lets us read/write the board.
+
+  "startPage": "https://monstersoundgirl.github.io/kidventure2/index.html",
+  // This is typically where Miro will open your app in a panel, if needed.
+
+  "sdkVersion": "1.0"
+}
