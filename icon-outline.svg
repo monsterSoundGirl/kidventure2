@@ -1,7 +1,4 @@
-//
-//  Untitled.swift
-//  kidventure2
-//
-//  Created by Christian Wright on 3/5/25.
-//
-
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect width="22" height="22" x="1" y="1" rx="4" fill="none" stroke="#4262ff" stroke-width="2"/>
+  <text x="12" y="16" font-family="Arial" font-size="12" fill="#4262ff" text-anchor="middle">K</text>
+</svg>

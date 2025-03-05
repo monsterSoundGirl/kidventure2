@@ -10,6 +10,8 @@
 		820845842D78AC2C005F81D1 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		820845862D78AC5D005F81D1 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
 		820845872D78AC96005F81D1 /* styles.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
+		8208458A2D78FE6D005F81D1 /* icon-color.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "icon-color.svg"; sourceTree = "<group>"; };
+		8208458B2D78FE88005F81D1 /* icon-outline.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "icon-outline.svg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -18,6 +20,8 @@
 			children = (
 				820845842D78AC2C005F81D1 /* index.html */,
 				820845862D78AC5D005F81D1 /* script.js */,
+				8208458A2D78FE6D005F81D1 /* icon-color.svg */,
+				8208458B2D78FE88005F81D1 /* icon-outline.svg */,
 				820845872D78AC96005F81D1 /* styles.css */,
 			);
 			sourceTree = "<group>";

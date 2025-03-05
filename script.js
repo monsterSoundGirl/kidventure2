@@ -51,27 +51,35 @@ async function initializeApp() {
     // If we get here, we're running inside Miro
     updateStatus('Script loaded, initializing Miro SDK...');
     
-    // Initialize the Miro SDK
-    await miro.board.ui.on('icon:click', async () => {
-      try {
-        updateStatus('Creating sticky note from toolbar click...');
-        await miro.board.createStickyNote({
-          content: 'Hello from Kidventure v2!',
-          x: 0,
-          y: 0,
-          width: 200,
-          style: {
-            fillColor: '#fff9b1',
+    // Initialize the Miro SDK - USING THE RIGHT INITIALIZATION PATTERN
+    await miro.board.ui.initialize({
+      toolbar: {
+        // Adding toolbar buttons explicitly
+        items: [
+          {
+            // Icon button in toolbar
+            tooltip: 'Add Sticky',
+            svgIcon: '<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#4262ff"/><text x="12" y="16" font-family="Arial" font-size="12" fill="white" text-anchor="middle">K</text></svg>',
+            onClick: async () => {
+              // This function is called when the toolbar button is clicked
+              await miro.board.createStickyNote({
+                content: 'Hello from Kidventure v2!',
+                x: 0, // Center of the viewport
+                y: 0, // Center of the viewport
+                width: 200,
+                style: {
+                  fillColor: '#fff9b1', // Yellow sticky note
+                },
+              });
+              updateStatus('Created a sticky note on the board!');
+            },
           },
-        });
-        updateStatus('Successfully created a sticky note on the board!');
-      } catch (err) {
-        updateStatus('Error creating sticky note from toolbar: ' + err.message, true);
-      }
+        ],
+      },
     });
     
-    // Register drop capability
-    await miro.board.ui.on('drop', async (event) => {
+    // Register drag and drop capability
+    miro.board.ui.on('drop', async (event) => {
       try {
         const { x, y } = event;
         await miro.board.createStickyNote({
@@ -80,26 +88,13 @@ async function initializeApp() {
           y,
           width: 200,
           style: {
-            fillColor: '#d3f8e2',
+            fillColor: '#d3f8e2', // Light green sticky note
           },
         });
         updateStatus('Created sticky note from drop event');
       } catch (err) {
         updateStatus('Error handling drop event: ' + err.message, true);
       }
-    });
-    
-    // Register the app
-    await miro.board.ui.initialize({
-      capabilities: {
-        tooltip: {
-          text: 'Kidventure',
-          iconShape: 'round',
-        },
-        draggable: {
-          enabled: true,
-        },
-      },
     });
     
     updateStatus('Miro SDK initialized successfully!');
